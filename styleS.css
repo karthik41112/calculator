@@ -1,0 +1,71 @@
+body {
+  min-width: 300px;
+  min-height: 400px;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (max-height: 480px) {
+  body {
+    font-size: 10px;
+  }
+}
+.module {
+  padding: 10px;
+  background-color: rgb(225, 222, 222);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title {
+  margin: 8px 0px;
+}
+.head {
+  background-color: brown;
+  text-align: center;
+  width: 100%;
+  height: 10vh;
+}
+.screen {
+  margin: 10px 0px;
+  height: 20vh;
+  width: 100%;
+  background-color: rgb(240, 250, 250);
+}
+.keyboard {
+  width: 100%;
+  height: 63vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.key {
+  text-align: center;
+  border: 1px solid black;
+  display: inline-block;
+  width: 24.3%;
+  height: 18%;
+  background-color: white;
+}
+.key span {
+  font-size: 2em;
+  display: inline-block;
+  position: relative;
+  top: 30%;
+}
+.key.eq {
+  background-color: brown;
+}
+.screenTop {
+  width: 100%;
+  height: 30%;
+  background-color: aqua;
+  padding: 5px;
+  font-size: 1.5em;
+}
+.screenBot {
+  width: 100%;
+  height: 70%;
+  padding: 5px;
+  font-size: 3em;
+}
