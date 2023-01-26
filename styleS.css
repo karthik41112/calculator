@@ -13,6 +13,7 @@ body {
   padding: 10px;
   background-color: rgb(225, 222, 222);
   display: flex;
+  /* width: 75%; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -57,15 +58,16 @@ body {
   background-color: brown;
 }
 .screenTop {
-  width: 100%;
+  /* width: 100%; */
   height: 30%;
   background-color: aqua;
   padding: 5px;
   font-size: 1.5em;
 }
 .screenBot {
-  width: 100%;
-  height: 70%;
+  /* width: 100%; */
+  /* background-color: aquamarine; */
+  height: 50%;
   padding: 5px;
   font-size: 3em;
 }
