@@ -64,23 +64,31 @@ function equals() {
   }
 }
 
+function opration(t, b, opr) {
+  let sy = t.slice(t.length - 1);
+  if (sy == opr && b != "") {
+    screenTop.innerHTML += b + opr;
+  } else if (sy >= "0" && sy <= "9" && !eqed) {
+    screenTop.innerHTML += opr + b + opr;
+  } else if (eqed) {
+    screenTop.innerHTML = b + opr;
+  } else if (b != "") {
+    screenTop.innerHTML += b + opr;
+  } else {
+    screenTop.innerHTML = t.slice(0, t.length - 1) + opr;
+  }
+}
+
 //adding
 function add() {
   let t = screenTop.innerHTML;
   let b = screenBot.innerHTML;
   if (t != "") {
-    if (t.slice(t.length - 1) == "+" && b != "") {
-      screenTop.innerHTML += b + "+";
-    } else if (b != "" && !eqed) {
-      screenTop.innerHTML += "+" + b + "+";
-    } else if (eqed) {
-      screenTop.innerHTML = b + "+";
-    }
-    screenBot.innerHTML = "";
+    opration(t, b, "+");
   } else if (b != "") {
     screenTop.innerHTML = b + "+";
-    screenBot.innerHTML = "";
   }
+  screenBot.innerHTML = "";
   sign = "+";
   eqed = false;
 }
@@ -88,41 +96,54 @@ function sub() {
   let t = screenTop.innerHTML;
   let b = screenBot.innerHTML;
   if (t != "") {
-    let sy = t.slice(t.length - 1);
-    if (sy == "-" && b != "") {
-      screenTop.innerHTML += b + "-";
-    } else if (sy >= "0" && sy <= "9") {
-      screenTop.innerHTML += "+" + b + "+";
-    } else if (b != "" && !eqed) {
-    } else if (eqed) {
-      screenTop.innerHTML = b + "+";
-    }
-    screenBot.innerHTML = "";
+    opration(t, b, "-");
   } else if (b != "") {
-    screenTop.innerHTML = b + "+";
-    screenBot.innerHTML = "";
+    screenTop.innerHTML = b + "-";
   }
-  sign = "+";
+  screenBot.innerHTML = "";
+  sign = "-";
   eqed = false;
 }
-function multiply() {}
-function divied() {}
+function multiply() {
+  let t = screenTop.innerHTML;
+  let b = screenBot.innerHTML;
+  if (t != "") {
+    opration(t, b, "*");
+  } else if (b != "") {
+    screenTop.innerHTML = b + "*";
+  }
+  screenBot.innerHTML = "";
+  sign = "*";
+  eqed = false;
+}
+function divied() {
+  let t = screenTop.innerHTML;
+  let b = screenBot.innerHTML;
+  if (t != "") {
+    opration(t, b, "/");
+  } else if (b != "") {
+    screenTop.innerHTML = b + "/";
+  }
+  screenBot.innerHTML = "";
+  sign = "/";
+  eqed = false;
+}
 
 document.addEventListener("keydown", (e) => {
-  let text = "19";
-  console.log(e.keyCode);
-  if (e.keyCode >= text.charCodeAt(0) && e.keyCode <= text.charCodeAt(1)) {
+  // console.log(e.keyCode);
+  if (e.key >= 1 && e.key <= 9) {
+    // numberAdd(String.fromCharCode(v));
     numberAdd(e.key);
-  } else if (e.keyCode == 13 || e.keyCode == 187) {
+  } else if (e.key == "=" || e.key == "Enter") {
     equals();
-  } else if (e.keyCode == 107) {
+  } else if (e.key == "+") {
     add();
-  } else if (e.keyCode == 106) {
-    //*
-  } else if (e.keyCode == 109) {
-    //-
-  } else if (e.keyCode == 111) {
-    ///
+  } else if (e.key == "-") {
+    sub();
+  } else if (e.key == "*") {
+    multiply();
+  } else if (e.key == "/") {
+    divied();
   }
 });
 
@@ -140,6 +161,10 @@ for (let i in Nodes) {
       add();
     } else if (v == "-") {
       sub();
+    } else if (v == "*") {
+      multiply();
+    } else if (v == "/") {
+      divied();
     }
   });
 }
